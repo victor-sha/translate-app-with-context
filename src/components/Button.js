@@ -6,18 +6,18 @@ import ColorContext from '../contexts/ColorContext';
 class Button extends Component {
     renderButton = color =>
         <button className={`ui button ${color}`}>
-            <LanguageContext>
-                {value => value === 'english' ?
+            <LanguageContext.Consumer>
+                {({ language }) => language === 'english' ?
                     'Submit' :
                     'Voorleggen'}
-            </LanguageContext>
+            </LanguageContext.Consumer>
         </button>;
     
     render() {
         return (
-            <ColorContext>
+            <ColorContext.Consumer>
                 {(color) => this.renderButton(color)}
-            </ColorContext>
+            </ColorContext.Consumer>
         );
     }
 }
